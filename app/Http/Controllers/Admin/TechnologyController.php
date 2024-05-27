@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Technology;
 use App\Http\Requests\StoreTechnologyRequest;
 use App\Http\Requests\UpdateTechnologyRequest;
 use Illuminate\Support\Str;
+use App\Http\Controllers\Controller;
 
 class TechnologyController extends Controller
 {
@@ -73,6 +74,7 @@ class TechnologyController extends Controller
      */
     public function destroy(Technology $technology)
     {
+        $technology->projects()->detach();
         $technology->delete();
         return to_route('admin.technologies.index')->with('message', 'type deleted successfully');
     }
