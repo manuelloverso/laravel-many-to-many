@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Project extends Model
 {
     use HasFactory;
-    protected $guarded = ['_token'];
+    protected $fillable = ['title', 'slug', 'date', 'description', 'type_id'];
 
     public function type(): BelongsTo
     {

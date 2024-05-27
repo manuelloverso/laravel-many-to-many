@@ -19,14 +19,13 @@
                     <p><strong>Type:
                         </strong>{{ $project->type ? $project->type->name : 'There are no types linked to this project' }}
                     </p>
-                    <p><strong>Technologies: </strong>
-                        @forelse ($project->technologies as $technology)
-                            {{-- @dd($technology) --}}
-                            {{ $technology->name }}
-                        @empty
-                            There are no technologies linked
-                        @endforelse
-                    </p>
+                    <strong>Technologies: </strong>
+                    @forelse ($project->technologies as $technology)
+                        {{-- @dd($technology) --}}
+                        <button class="btn btn-dark">{{ $technology->name }}</button>
+                    @empty
+                        There are no technologies linked
+                    @endforelse
                     <p><strong>Created: </strong>{{ $project->date }}</p>
                     <a class="btn btn-dark" href="{{ route('admin.projects.edit', $project) }}">Edit</a>
                     @include('partials.delete-modal')
