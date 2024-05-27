@@ -1,0 +1,16 @@
+@use "admin-side-bar";
+$bg-darker: #212529;
+
+.admin-projects-index {
+    main {
+        flex-grow: 1;
+        padding: 0 1rem;
+        height: 100vh;
+        overflow-x: auto;
+    }
+    .truncate {
+        white-space: nowrap;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+}

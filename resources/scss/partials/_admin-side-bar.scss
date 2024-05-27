@@ -1,0 +1,28 @@
+$bg-dark: #343a40;
+
+aside {
+    height: 100vh;
+    width: 20%;
+    background-color: $bg-dark;
+    color: white;
+    padding: 1.5rem;
+
+    nav {
+        ul {
+            li {
+                margin-bottom: 10px;
+                font-size: 1.1rem;
+                a {
+                    display: inline-block;
+                    color: white;
+                    text-decoration: none;
+                    transition: transform 0.2s;
+
+                    &:hover {
+                        transform: scale(1.1);
+                    }
+                }
+            }
+        }
+    }
+}

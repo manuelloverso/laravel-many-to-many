@@ -1,0 +1,8 @@
+@use "partials/admin-projects-index";
+@import "~bootstrap/scss/bootstrap";
+
+$bg-dark: #212529;
+
+body {
+    background-color: $bg-dark;
+}
