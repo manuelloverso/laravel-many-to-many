@@ -11,6 +11,9 @@
                 <a href="{{ route('admin.types.index') }}">{{ __('Types') }}</a>
             </li>
             <li>
+                <a href="{{ route('admin.technologies.index') }}">{{ __('Technologies') }}</a>
+            </li>
+            <li>
                 <a href="{{ url('admin') }}">{{ __('Dashboard') }}</a>
             </li>
 
