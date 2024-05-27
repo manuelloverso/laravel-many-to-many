@@ -46,14 +46,15 @@
         <div class="mb-3 d-flex gap-4">
             @foreach ($technologies as $technology)
                 <div class="form-check">
-                    {{-- @dd(in_array($technology, $project->technologies->toArray())) --}}
+                    {{-- @dd($project->technologies->contains($technology)) --}}
                     @if ($errors->any())
                         <input name="technologies[]" class="form-check-input" type="checkbox" value="{{ $technology->id }}"
                             id="technology-{{ $technology->id }}"
                             {{ in_array($technology->id, old('technologies')) ? 'checked' : '' }} />
                     @else
                         <input name="technologies[]" class="form-check-input" type="checkbox" value="{{ $technology->id }}"
-                            id="technology-{{ $technology->id }}" {{-- {{ in_array($technology, $project->technologies->toArray()) ? 'checked' : '' }} --}} />
+                            id="technology-{{ $technology->id }}"
+                            {{ $project->technologies->contains($technology) ? 'checked' : '' }} />
                     @endif
                     <label class="form-check-label" for="technology-{{ $technology->id }}"> {{ $technology->name }}
                     </label>
