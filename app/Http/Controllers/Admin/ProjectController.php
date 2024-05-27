@@ -42,7 +42,7 @@ class ProjectController extends Controller
         $slug = Str::slug($request->title, '-');
         $val_data['slug'] = $slug;
         //image
-        dd($val_data);
+        //dd($val_data);
         if ($request->has('image')) {
             $img_path = Storage::put('uploads', $val_data['image']);
             $val_data['image'] = $img_path;
@@ -51,7 +51,6 @@ class ProjectController extends Controller
         if ($request->has('technologies')) {
             $project->technologies()->attach($val_data['technologies']);
         }
-        $project = Project::where('title',  $val_data['title'])->first();
         return to_route('admin.projects.show', compact('project'))->with('message', 'Project created succesfully');
     }
 
@@ -69,7 +68,8 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $types = Type::all();
-        return view('admin.projects.edit', compact('project', 'types'));
+        $technologies = Technology::all();
+        return view('admin.projects.edit', compact('project', 'types', 'technologies'));
     }
 
     /**
@@ -98,6 +98,9 @@ class ProjectController extends Controller
 
         //dd($val_data);
         $project->update($val_data);
+        if ($request->has('technologies')) {
+            $project->technologies()->sync($val_data['technologies']);
+        }
         return to_route('admin.projects.show', compact('project'))->with('message', 'Project updated succesfully');
     }
 
