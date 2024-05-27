@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Technology extends Model
 {
     use HasFactory;
-
+    protected $fillable = ['name', 'slug'];
     /**
      * The projects that belong to the Technology
      *

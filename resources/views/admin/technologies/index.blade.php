@@ -3,7 +3,7 @@
 @section('content')
     <div class=" mb-3 d-flex justify-content-between">
         <h3>Available Technologies</h3>
-        <a class="btn btn-primary" href="{{ route('admin.technologies.create') }}">Add Type</a>
+        <a class="btn btn-primary" href="{{ route('admin.technologies.create') }}">Add Technology</a>
     </div>
     @include('partials.action-message')
     <div class="table-responsive">
