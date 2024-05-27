@@ -18,7 +18,6 @@
                                 </strong>{{ $project->type ? $project->type->name : 'There are no types linked to this project' }}
                             </p>
                             <p><strong>Description: </strong>{{ $project->description }}</p>
-                            <p><strong>Technologies: </strong>{{ $project->technologies }}</p>
                             <p><strong>Created: </strong>{{ $project->date }}</p>
                         </div>
                     </div>

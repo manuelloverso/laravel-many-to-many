@@ -23,7 +23,6 @@
                     <th scope="col">Image</th>
                     <th scope="col">Description</th>
                     <th scope="col">Type</th>
-                    <th scope="col">Technologies</th>
                     <th scope="col">Date</th>
                     <th scope="col">Actions</th>
                 </tr>
@@ -44,7 +43,6 @@
                         <td style="max-width: 200px" class="truncate">{{ $project->description }}</td>
                         <td>{{ $project->type ? $project->type->name : 'There are no types linked to this project' }}
                         </td>
-                        <td style="max-width: 100px">{{ $project->technologies }}</td>
                         <td>{{ $project->date }}</td>
 
                         {{-- action buttons --}}

@@ -41,17 +41,6 @@
             </select>
         </div>
 
-        {{-- technologies input --}}
-        <div class="mb-3">
-            <label for="technologies" class="form-label ">technologies</label>
-            <input type="text" name="technologies" id="technologies"
-                class="form-control @error('technologies') is-invalid @enderror" placeholder="add the used technologies"
-                value="{{ old('technologies', $project->technologies) }}" />
-            @error('technologies')
-                <div class="text-danger">{{ $message }}</div>
-            @enderror
-        </div>
-
         {{-- date input --}}
         <div class="mb-3">
             <label for="date" class="form-label ">Sale Date</label>

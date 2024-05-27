@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('slug', 50);
             $table->string('image')->nullable();
             $table->text('description')->nullable();
-            $table->text('technologies', 500)->nullable();
             $table->date('date')->nullable();
             $table->timestamps();
         });
