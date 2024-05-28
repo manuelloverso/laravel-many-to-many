@@ -51,7 +51,8 @@
                                     class="fa-solid fa-eye "></i></a>
                             <a class="btn btn-dark" href="{{ route('admin.projects.edit', $project) }}"><i
                                     class="fa-solid fa-pencil "></i></a>
-                            @include('partials.delete-modal')
+                            {{-- delete modal button --}}
+                            <x-delete-modal :item="$project" :item_name="'title'" :route="'projects'" />
                         </td>
                     </tr>
                 @empty
