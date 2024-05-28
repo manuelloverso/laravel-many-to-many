@@ -50,7 +50,7 @@
                     @if ($errors->any())
                         <input name="technologies[]" class="form-check-input" type="checkbox" value="{{ $technology->id }}"
                             id="technology-{{ $technology->id }}"
-                            {{ in_array($technology->id, old('technologies')) ? 'checked' : '' }} />
+                            {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }} />
                     @else
                         <input name="technologies[]" class="form-check-input" type="checkbox" value="{{ $technology->id }}"
                             id="technology-{{ $technology->id }}"

@@ -6,6 +6,8 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class StoreTechnologyRequest extends FormRequest
 {
+    protected $errorBag = 'create';
+
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -25,4 +27,12 @@ class StoreTechnologyRequest extends FormRequest
             'name' => 'required|min:2',
         ];
     }
+
+    // change error messages
+    /*  public function messages(): array
+    {
+        return [
+            'name.required' => 'Just a try',
+        ];
+    } */
 }

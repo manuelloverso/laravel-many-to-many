@@ -45,7 +45,7 @@ class TechnologyController extends Controller
      */
     public function show(Technology $technology)
     {
-        //
+        // There's not much to show
     }
 
     /**

@@ -8,14 +8,15 @@
         <form class="d-flex align-items-center gap-3" action="{{ route('admin.technologies.store') }}" method="post">
             @csrf {{-- this is a laravel directive to protect your application from cross-site request forgery --}}
 
-            @error('name')
+            @error('name', 'create')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
 
             {{-- name input --}}
             <div class="">
-                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror"
-                    placeholder="add the name" value="{{ old('name') }}" />
+                <input type="text" name="name" id="name"
+                    class="form-control @error('name', 'create') is-invalid @enderror" placeholder="add the name"
+                    value="{{ old('name') }}" />
             </div>
 
             <button type="submit" class="btn btn-primary">
@@ -42,19 +43,19 @@
                         <td scope="row"><strong>{{ $technology->id }}</strong></td>
                         @if (isset($editing_tech) && $editing_tech->id == $technology->id)
                             <td>
-                                <form class="d-flex gap-2" action="{{ route('admin.technologies.update', $technology) }}"
-                                    method="post">
+                                <form class="d-flex gap-2 align-items-start"
+                                    action="{{ route('admin.technologies.update', $technology) }}" method="post">
                                     @csrf {{-- this is a laravel directive to protect your application from cross-site request forgery --}}
                                     @method('PUT')
 
                                     {{-- name input --}}
                                     <div>
                                         <input type="text" name="name" id="name"
-                                            class="form-control @error('name') is-invalid @enderror"
+                                            class="form-control @error('name', 'update') is-invalid @enderror"
                                             placeholder="add the name" value="{{ old('name', $technology->name) }}" />
-                                        {{-- @error('name')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror --}}
+                                        @error('name', 'update')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <button type="submit" class="btn btn-primary">
                                         Save

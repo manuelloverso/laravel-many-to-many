@@ -22,7 +22,7 @@
                     <strong>Technologies: </strong>
                     @forelse ($project->technologies as $technology)
                         {{-- @dd($technology) --}}
-                        <button class="btn btn-dark">{{ $technology->name }}</button>
+                        <span class="badge bg-dark p-2">{{ $technology->name }}</span>
                     @empty
                         There are no technologies linked
                     @endforelse
