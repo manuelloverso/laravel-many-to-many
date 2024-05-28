@@ -1,17 +1,36 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class=" mb-3 d-flex justify-content-between">
-        <h3>Available Technologies</h3>
-        <a class="btn btn-primary" href="{{ route('admin.technologies.create') }}">Add Technology</a>
-    </div>
     @include('partials.action-message')
+    <div class=" mb-3 d-flex justify-content-between">
+
+        <h3>Available Technologies</h3>
+        <form class="d-flex align-items-center gap-3" action="{{ route('admin.technologies.store') }}" method="post">
+            @csrf {{-- this is a laravel directive to protect your application from cross-site request forgery --}}
+
+            @error('name')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+
+            {{-- name input --}}
+            <div class="">
+                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror"
+                    placeholder="add the name" value="{{ old('name') }}" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Add Technology
+            </button>
+
+        </form>
+    </div>
     <div class="table-responsive">
         <table class="table table-hover table-secondary">
             <thead>
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Associated Projects</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
@@ -20,8 +39,7 @@
                     <tr class="">
                         <td scope="row"><strong>{{ $technology->id }}</strong></td>
                         <td>{{ $technology->name }}</td>
-
-
+                        <td></td>
                         <td>
                             {{-- NOT SHOWING THE SINGLE TYPE AS THERE IS NOTHING TO SHOW --}}
                             <a class="btn btn-dark" href="{{ route('admin.technologies.edit', $technology) }}"><i
