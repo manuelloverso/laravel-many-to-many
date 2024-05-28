@@ -28,7 +28,7 @@
                     @endforelse
                     <p><strong>Created: </strong>{{ $project->date }}</p>
                     <a class="btn btn-dark" href="{{ route('admin.projects.edit', $project) }}">Edit</a>
-                    @include('partials.delete-modal')
+                    <x-delete-modal :item="$project" :name="'title'" :route="'projects'" />
                     <a class="btn btn-dark" href="{{ route('admin.projects.index') }}">Back</a>
 
                 </div>
