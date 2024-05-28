@@ -9,7 +9,7 @@
 
     {{-- heading --}}
     <div class=" mb-3 d-flex justify-content-between">
-        <h3>My Projects</h3>
+        <h3 class="text-secondary">My Projects</h3>
         <a class="btn btn-primary" href="{{ route('admin.projects.create') }}">Create</a>
     </div>
 

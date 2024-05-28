@@ -5,16 +5,16 @@
         </a>
         <ul class="d-flex flex-column list-unstyled">
             <li>
-                <a href="{{ route('admin.projects.index') }}">{{ __('Projects') }}</a>
+                <a href="{{ url('admin') }}">{{ __('Dashboard') }}</a>
             </li>
             <li>
-                <a href="{{ route('admin.types.index') }}">{{ __('Types') }}</a>
+                <a href="{{ route('admin.projects.index') }}">{{ __('Projects') }}</a>
             </li>
             <li>
                 <a href="{{ route('admin.technologies.index') }}">{{ __('Technologies') }}</a>
             </li>
             <li>
-                <a href="{{ url('admin') }}">{{ __('Dashboard') }}</a>
+                <a href="{{ route('admin.types.index') }}">{{ __('Types') }}</a>
             </li>
 
             <li>

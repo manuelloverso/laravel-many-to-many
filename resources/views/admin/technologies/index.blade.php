@@ -4,7 +4,7 @@
     @include('partials.action-message')
     <div class=" mb-3 d-flex justify-content-between">
 
-        <h3>Available Technologies</h3>
+        <h3 class="text-secondary">Available Technologies</h3>
         <form class="d-flex align-items-center gap-3" action="{{ route('admin.technologies.store') }}" method="post">
             @csrf {{-- this is a laravel directive to protect your application from cross-site request forgery --}}
 
@@ -15,7 +15,7 @@
             {{-- name input --}}
             <div class="">
                 <input type="text" name="name" id="name"
-                    class="form-control @error('name', 'create') is-invalid @enderror" placeholder="add the name"
+                    class="form-control @error('name', 'create') is-invalid @enderror" placeholder="Name"
                     value="{{ old('name') }}" />
             </div>
 
