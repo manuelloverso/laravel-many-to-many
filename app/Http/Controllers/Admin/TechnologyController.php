@@ -37,7 +37,7 @@ class TechnologyController extends Controller
         $val_data['slug'] = $slug;
         //dd($val_data);
         Technology::create($val_data);
-        return to_route('admin.technologies.index')->with('message', 'Type created successfully');
+        return to_route('admin.technologies.index')->with('message', 'Technology added successfully');
     }
 
     /**

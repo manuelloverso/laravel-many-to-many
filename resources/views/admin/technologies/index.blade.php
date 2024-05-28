@@ -66,7 +66,7 @@
                         @endif
 
                         {{-- Number of linked projects --}}
-                        <td></td>
+                        <td>{{ count($technology->projects) }}</td>
 
                         {{-- Action Buttons --}}
                         <td>
