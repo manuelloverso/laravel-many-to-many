@@ -82,7 +82,7 @@
                             @endif
 
                             {{-- delete modal button --}}
-                            <x-delete-modal :item="$technology" :item_name="'name'" :route="'technologies'" />
+                            <x-delete-modal :item="$technology" :name="'name'" :route="'technologies'" />
                         </td>
                     </tr>
                 @empty

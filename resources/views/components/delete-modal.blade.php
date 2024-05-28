@@ -11,11 +11,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalTitleId-{{ $item->id }}">
-                        Deleting '{{ $item->$item_name }}'
+                        Deleting '{{ $item->$name }}'
                     </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">Are you sure you want to delete {{ $item->$item_name }}? The
+                <div class="modal-body">Are you sure you want to delete {{ $item->$name }}? The
                     action
                     will
                     be permanent</div>

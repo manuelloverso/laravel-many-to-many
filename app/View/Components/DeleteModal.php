@@ -13,7 +13,7 @@ class DeleteModal extends Component
      */
     public function __construct(
         public $item,
-        public string $item_name,
+        public string $name,
         public string $route,
     ) {
     }
