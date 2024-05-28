@@ -24,7 +24,7 @@ class TechnologyController extends Controller
      */
     public function create()
     {
-        return view('admin.technologies.create');
+        // Adding new technologies directly from the index
     }
 
     /**
@@ -53,7 +53,9 @@ class TechnologyController extends Controller
      */
     public function edit(Technology $technology)
     {
-        return view('admin.technologies.edit', compact('technology'));
+        $technologies = Technology::all();
+        $editing_tech = $technology;
+        return view('admin.technologies.index', compact('editing_tech', 'technologies'));
     }
 
     /**
@@ -76,6 +78,6 @@ class TechnologyController extends Controller
     {
         $technology->projects()->detach();
         $technology->delete();
-        return to_route('admin.technologies.index')->with('message', 'type deleted successfully');
+        return to_route('admin.technologies.index')->with('message', 'Technology deleted successfully');
     }
 }

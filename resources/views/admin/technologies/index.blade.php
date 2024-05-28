@@ -37,13 +37,48 @@
             <tbody>
                 @forelse ($technologies as $technology)
                     <tr class="">
+
+                        {{-- Edit / Name Row --}}
                         <td scope="row"><strong>{{ $technology->id }}</strong></td>
-                        <td>{{ $technology->name }}</td>
+                        @if (isset($editing_tech) && $editing_tech->id == $technology->id)
+                            <td>
+                                <form class="d-flex gap-2" action="{{ route('admin.technologies.update', $technology) }}"
+                                    method="post">
+                                    @csrf {{-- this is a laravel directive to protect your application from cross-site request forgery --}}
+                                    @method('PUT')
+
+                                    {{-- name input --}}
+                                    <div>
+                                        <input type="text" name="name" id="name"
+                                            class="form-control @error('name') is-invalid @enderror"
+                                            placeholder="add the name" value="{{ old('name', $technology->name) }}" />
+                                        {{-- @error('name')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror --}}
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">
+                                        Save
+                                    </button>
+                                </form>
+                            </td>
+                        @else
+                            <td>{{ $technology->name }}</td>
+                        @endif
+
+                        {{-- Number of linked projects --}}
                         <td></td>
+
+                        {{-- Action Buttons --}}
                         <td>
-                            {{-- NOT SHOWING THE SINGLE TYPE AS THERE IS NOTHING TO SHOW --}}
-                            <a class="btn btn-dark" href="{{ route('admin.technologies.edit', $technology) }}"><i
-                                    class="fa-solid fa-pencil "></i></a>
+                            @if (isset($editing_tech) && $editing_tech->id == $technology->id)
+                                <a class="btn btn-danger" href="{{ route('admin.technologies.index') }}">
+                                    <i class="fa-solid fa-delete-left"></i>
+                                </a>
+                            @else
+                                <a class="btn btn-dark" href="{{ route('admin.technologies.edit', $technology) }}">
+                                    <i class="fa-solid fa-pencil "></i>
+                                </a>
+                            @endif
                             {{-- MODAL TO DELETE THE ITEM --}}
                             <!-- Modal trigger button -->
                             <button type="button" class="btn btn-danger" data-bs-toggle="modal"

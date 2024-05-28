@@ -27,7 +27,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        // Add new tachnologies directly from the index
+        $types = Type::all();
+        $technologies = Technology::all();
+        return view('admin.projects.create', compact('types', 'technologies'));
     }
 
     /**
@@ -49,7 +51,7 @@ class ProjectController extends Controller
         if ($request->has('technologies')) {
             $project->technologies()->attach($val_data['technologies']);
         }
-        return to_route('admin.projects.index')->with('message', 'Project created succesfully');
+        return to_route('admin.projects.show', compact('project'))->with('message', 'Project created succesfully');
     }
 
     /**
