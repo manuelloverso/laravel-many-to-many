@@ -1,11 +1,30 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class=" mb-3 d-flex justify-content-between">
-        <h3>Available Types</h3>
-        <a class="btn btn-primary" href="{{ route('admin.types.create') }}">Add Type</a>
-    </div>
     @include('partials.action-message')
+    <div class=" mb-3 d-flex justify-content-between">
+
+        <h3>Available Types</h3>
+        <form class="d-flex align-items-center gap-3" action="{{ route('admin.types.store') }}" method="post">
+            @csrf {{-- this is a laravel directive to protect your application from cross-site request forgery --}}
+
+            @error('name', 'create')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
+
+            {{-- name input --}}
+            <div class="">
+                <input type="text" name="name" id="name"
+                    class="form-control @error('name', 'create') is-invalid @enderror" placeholder="add the name"
+                    value="{{ old('name') }}" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Add Type
+            </button>
+
+        </form>
+    </div>
     <div class="table-responsive">
         <table class="table table-hover table-secondary">
             <thead>
@@ -19,13 +38,43 @@
                 @forelse ($types as $type)
                     <tr class="">
                         <td scope="row"><strong>{{ $type->id }}</strong></td>
-                        <td>{{ $type->name }}</td>
+                        {{-- Edit / Name Row --}}
+                        @if (isset($editing_type) && $editing_type->id == $type->id)
+                            <td>
+                                <form class="d-flex gap-2 align-items-start"
+                                    action="{{ route('admin.types.update', $type) }}" method="post">
+                                    @csrf {{-- this is a laravel directive to protect your application from cross-site request forgery --}}
+                                    @method('PUT')
+
+                                    {{-- name input --}}
+                                    <div>
+                                        <input type="text" name="name" id="name"
+                                            class="form-control @error('name', 'update') is-invalid @enderror"
+                                            placeholder="add the name" value="{{ old('name', $type->name) }}" />
+                                        @error('name', 'update')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">
+                                        Save
+                                    </button>
+                                </form>
+                            </td>
+                        @else
+                            <td>{{ $type->name }}</td>
+                        @endif
 
 
                         <td>
-                            {{-- NOT SHOWING THE SINGLE TYPE AS THERE IS NOTHING TO SHOW --}}
-                            <a class="btn btn-dark" href="{{ route('admin.types.edit', $type) }}"><i
-                                    class="fa-solid fa-pencil "></i></a>
+                            @if (isset($editing_type) && $editing_type->id == $type->id)
+                                <a class="btn btn-danger" href="{{ route('admin.types.index') }}">
+                                    <i class="fa-solid fa-delete-left"></i>
+                                </a>
+                            @else
+                                <a class="btn btn-dark" href="{{ route('admin.types.edit', $type) }}">
+                                    <i class="fa-solid fa-pencil "></i>
+                                </a>
+                            @endif
                             <x-delete-modal :item="$type" :name="'name'" :route="'types'" />
                         </td>
                     </tr>

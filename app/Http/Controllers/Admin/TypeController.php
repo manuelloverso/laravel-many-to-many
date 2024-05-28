@@ -24,7 +24,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        return view('admin.types.create');
+        //
     }
 
     /**
@@ -53,7 +53,9 @@ class TypeController extends Controller
      */
     public function edit(Type $type)
     {
-        return view('admin.types.edit', compact('type'));
+        $types = Type::all();
+        $editing_type = $type;
+        return view('admin.types.index', compact('editing_type', 'types'));
     }
 
     /**
