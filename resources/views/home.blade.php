@@ -18,6 +18,13 @@
                                 </strong>{{ $project->type ? $project->type->name : 'There are no types linked to this project' }}
                             </p>
                             <p><strong>Description: </strong>{{ $project->description }}</p>
+                            <strong>Technologies: </strong>
+                            @forelse ($project->technologies as $technology)
+                                {{-- @dd($technology) --}}
+                                <button class="btn btn-dark">{{ $technology->name }}</button>
+                            @empty
+                                There are no technologies linked
+                            @endforelse
                             <p><strong>Created: </strong>{{ $project->date }}</p>
                         </div>
                     </div>

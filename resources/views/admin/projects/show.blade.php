@@ -27,7 +27,7 @@
                         There are no technologies linked
                     @endforelse
                     <p><strong>Created: </strong>{{ $project->date }}</p>
-                    <a class="btn btn-dark" href="{{ route('admin.projects.edit', $project) }}">Edit</a>
+                    <a class="badge bg-dark" href="{{ route('admin.projects.edit', $project) }}">Edit</a>
                     @include('partials.delete-modal')
                     <a class="btn btn-dark" href="{{ route('admin.projects.index') }}">Back</a>
 

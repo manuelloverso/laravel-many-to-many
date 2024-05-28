@@ -100,6 +100,8 @@ class ProjectController extends Controller
         $project->update($val_data);
         if ($request->has('technologies')) {
             $project->technologies()->sync($val_data['technologies']);
+        } else {
+            $project->technologies()->sync([]);
         }
         return to_route('admin.projects.show', compact('project'))->with('message', 'Project updated succesfully');
     }
@@ -112,7 +114,7 @@ class ProjectController extends Controller
         if ($project->image) {
             Storage::delete($project->image);
         }
-        $project->technologies()->detach();
+        //$project->technologies()->detach();
         $project->delete();
         return to_route('admin.projects.index')->with('message', 'Project deleted succesfully');
     }
