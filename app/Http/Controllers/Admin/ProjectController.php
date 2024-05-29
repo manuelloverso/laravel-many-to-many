@@ -10,16 +10,22 @@ use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        //dd(Project::find(6)->with('technologies'));
         //dd(Project::all());
-        return view('admin.projects.index', ['projects' => Project::orderByDesc('id')->get()]);
+        $projects = Project::orderByDesc('id')->get();
+        $technologies = Technology::all();
+
+        //filtered
+        return view('admin.projects.index', compact('projects', 'technologies'));
     }
 
     /**

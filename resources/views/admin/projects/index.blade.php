@@ -13,6 +13,19 @@
         <a class="btn btn-primary" href="{{ route('admin.projects.create') }}">Create</a>
     </div>
 
+    <div class="filter mb-3">
+        <form class="form d-flex gap-2" action="{{ route('admin.projects.index') }}" method="GET">
+            <select style="max-width: 500px" class="form-select" name="filter" id="filter">
+                <option selected disabled>Select a technology</option>
+                @foreach ($technologies as $tech)
+                    <option value="{{ $tech->id }}">{{ $tech->name }}</option>
+                @endforeach
+            </select>
+
+            <button class="btn btn-primary" type="submit">Filter</button>
+        </form>
+    </div>
+
     {{-- table --}}
     <div class="table-responsive">
         <table class="table table-hover table-secondary">
