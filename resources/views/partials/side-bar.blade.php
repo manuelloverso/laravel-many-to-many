@@ -1,8 +1,6 @@
 <aside>
     <nav>
-        <a class="navbar-brand d-flex align-items-center " href="{{ url('/') }}">
-            <h2>My Portfolio</h2>
-        </a>
+        <h2 class="mb-3">My Portfolio</h2>
         <ul class="d-flex flex-column list-unstyled">
             <li>
                 <a href="{{ url('admin') }}">{{ __('Dashboard') }}</a>

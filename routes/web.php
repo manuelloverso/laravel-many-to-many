@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     $projects = Project::all();
     $types = Type::all();
-    return view('home', compact('projects', 'types'));
+    return to_route('login');
 });
 
 // this one groups all the routes that need to be protected by the authentication
